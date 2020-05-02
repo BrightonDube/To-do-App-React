@@ -12,8 +12,8 @@ const year = today.getFullYear();
 function App() {
   const [list, setList] = useState([]);
   
-  const addItem = (state, setState) => {
-    
+  const addItem = (state, setState, event) => {
+    event.preventDefault();
     setList(prevItems => [...prevItems, state]);
     setState("");
   };

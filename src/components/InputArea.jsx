@@ -8,7 +8,7 @@ const InputArea = ({onClicked}) => {
         setState(event.target.value);
     };
     return(
-        <Form onSubmit={e => { e.preventDefault()}}>
+        <Form onSubmit={(event)=>{onClicked(state, setState, event)}}>
           <Form.Row>
               <Form.Control placeholder="To-do Item"
                   name="listItem"
