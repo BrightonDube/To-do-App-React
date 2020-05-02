@@ -3,21 +3,17 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from "./components/Header";
 import List from "./components/List";
-import { Form, Button, Col } from "react-bootstrap";
+import InputArea from './components/InputArea';
+
 
 const today = new Date();
 const year = today.getFullYear();
 
 function App() {
-  const [state, setState] = useState("");
   const [list, setList] = useState([]);
-
-  const updateList = (event)=> {
-        setState(event.target.value);
-    };
   
-  const addItem = (event) => {
-    event.preventDefault();
+  const addItem = (state, setState) => {
+    
     setList(prevItems => [...prevItems, state]);
     setState("");
   };
@@ -35,20 +31,7 @@ function App() {
 
       <div className="container main" >
         <Header />
-        <Form>
-          <Form.Row>
-              <Form.Control placeholder="To-do Item"
-                  name="listItem"
-                  type="text"
-                  value={state}
-                  onChange={updateList}
-                  className="input"                    
-              />
-              <Button as={Col} variant="warning" onClick={addItem} className="submit">
-                  Add Item
-              </Button>
-          </Form.Row>
-      </Form>
+        <InputArea onClicked={addItem} />
       
         <hr />
         <ul className="to-do-items">
